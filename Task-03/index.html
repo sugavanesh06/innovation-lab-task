@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="./style.css">
+    <title>Find Maximum in an Array</title>
+    <style>
+
+    </style>
+    <script>
+        function findMax() {
+            const input = document.getElementById("arrayInput").value.trim();
+
+            // Clear previous results and errors
+            document.getElementById("result").textContent = "";
+            document.getElementById("error").textContent = "";
+
+            if (!input) {
+                document.getElementById("error").textContent = "Please enter numbers separated by commas.";
+                return;
+            }
+
+            // Split input into array by commas and trim spaces
+            const arr = input.split(",").map(item => item.trim());
+
+            // Validate input - all elements should be valid numbers
+            for (let i = 0; i < arr.length; i++) {
+                if (arr[i] === "" || isNaN(arr[i])) {
+                    document.getElementById("error").textContent = `Invalid input: "${arr[i]}" is not a number.`;
+                    return;
+                }
+            }
+
+            // Convert all to numbers
+            const numArr = arr.map(Number);
+
+            // Find max number
+            const maxNum = Math.max(...numArr);
+
+            document.getElementById("result").textContent = `The maximum number in [${numArr.join(", ")}] is ${maxNum}.`;
+        }
+    </script>
+</head>
+<body>
+    <div class="container">
+        <h1>Find Maximum in an Array</h1>
+        <label for="arrayInput">Enter numbers separated by commas:</label>
+        <input type="text" id="arrayInput" placeholder="e.g. 10, 25, 3, 7, 89, 14" />
+        <button onclick="findMax()">Find Maximum</button>
+        <p id="result"></p>
+        <p id="error"></p>
+    </div>
+</body>
+</html>
