@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./style.css">
+    <title>Reverse String</title>
+    
+    <script>
+        function reverseString() {
+            var inputString = document.getElementById("inputString").value;
+            
+            if (inputString === "") {
+                alert("Please enter a string!");
+                return;
+            }
+
+            // Reverse the string using JavaScript
+            var reversed = inputString.split('').reverse().join('');
+            
+            // Display the reversed string
+            document.getElementById("result").innerHTML = "Reversed string: <span class='reversed'>" + reversed + "</span>";
+        }
+    </script>
+</head>
+<body>
+    <div class="container">
+        <h1>Reverse a String</h1>
+        <label for="inputString">Enter a string:</label><br>
+        <input type="text" id="inputString" required><br>
+        <button onclick="reverseString()">Reverse</button>
+        <p id="result"></p>
+    </div>
+</body>
+</html>
